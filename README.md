@@ -55,14 +55,9 @@ The network structure and the training parameter are both included in the model.
 The structure is identical to the [Nividia paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), which is listed bellow:
 
 
-First Header | Second Header
------------- | -------------
-Content from cell 1 | Content from cell 2
-Content in the first column | Content in the second column
-
-
 Layer (type)|Output Shape|Param #|Connected to                     
 ----------- | -----------|-----------|-----------
+lambda_2 (Lambda)|(None, 27, 80, 3)|0|lambda_input_1[0][0]      
 batchnormalization_12|(BatchNorm (None, 27, 80, 3)|54|batchnormalization_input_12[0][0]
 (Convolution2D)|(None, 14, 40, 24)|1824|batchnormalization_12[0][0]      
 (Convolution2D)|(None, 7, 20, 36)|21636|convolution2d_56[0][0] 
@@ -88,6 +83,12 @@ Total params: 10684077
 
 The learning rate we're choosing is 0.0001 according to other's discussion in on the Slack channel and our own testing. The 0.001 will be too large for training and 0.00001 will be to small to findout the optimized mininum.
 
+### Conclusion
+The model.json is with Lambda and Batch Normalization Layer while model3.json is only with Batch Normalization Layer. The previous one looks better.
+
+We've also tested the data on the testing track, but it cannot generate good result. I believe it could be the reason that the neuroun network has remembered the training image data, with it's luminance, color and contrast info. I'll try to add some randomly contrast, color etc. to see if it can work better for testing track. 
+
+However, the flipped image was proved to be deteriorate the training result
 
 
 
