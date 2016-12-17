@@ -90,5 +90,4 @@ We've also tested the data on the testing track, but it cannot generate good res
 
 However, the flipped image was proved to be deteriorate the training result
 
-
-
+The .h5 file was too large to github.
