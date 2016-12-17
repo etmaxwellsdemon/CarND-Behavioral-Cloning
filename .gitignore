@@ -1,0 +1,17 @@
+data
+.ipynb_checkpoints
+models
+
+
+*.ckpt
+*.h5
+*.meta
+*.jpg
+/Normal
+/RandomYUV
+/Recovery
+/Recovery_left
+/data
+/Counter-Clock/
+model.h5
+model1.h5
