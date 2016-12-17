@@ -8,8 +8,9 @@ This project is created as the 3rd project of Self-Driving Car Nanodegree Progra
 
 The goal is to drive a car autonomously in a simulator using a deep neuronal network based on the training data on the simulator of human driving behavior.
 
- 
 Bellow is the result on the training track and testing track.
+
+![](https://github.com/etmaxwellsdemon/CarND-Behavioral-Cloning/blob/master/Track1.gif)
 
 ### Dependencies
 
@@ -35,6 +36,8 @@ This project requires **Python 3.5** and the following Python libraries installe
 ### Preprocessing
 1. We convert the RGB to YUV according to the [paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf)
 
+![](https://github.com/etmaxwellsdemon/CarND-Behavioral-Cloning/blob/master/YUV.png)
+
 2. We resampled the image by the factor of 4, from 320x160 to 80x40
 
 3. Then we cropped top 13 pixals as it's useless for training.
@@ -52,48 +55,34 @@ The network structure and the training parameter are both included in the model.
 The structure is identical to the [Nividia paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), which is listed bellow:
 
 
+First Header | Second Header
+------------ | -------------
+Content from cell 1 | Content from cell 2
+Content in the first column | Content in the second column
+
+
 Layer (type)|Output Shape|Param #|Connected to                     
--
+----------- | -----------|-----------|-----------
 batchnormalization_12|(BatchNorm (None, 27, 80, 3)|54|batchnormalization_input_12[0][0]
--
 (Convolution2D)|(None, 14, 40, 24)|1824|batchnormalization_12[0][0]      
--
 (Convolution2D)|(None, 7, 20, 36)|21636|convolution2d_56[0][0] 
--
 (Convolution2D)|(None, 7, 20, 48)|43248|convolution2d_57[0][0] 
--
 (Convolution2D)|(None, 7, 20, 64)|27712|convolution2d_58[0][0] 
--
 (Convolution2D)|(None, 7, 20, 64)|36928|convolution2d_59[0][0] 
--
 (Flatten)|(None, 8960)|0|convolution2d_60[0][0]
--
-(Dropout)|(None, 7, 20, 64)|0|convolution2d_85[0][0]
--           
+(Dropout)|(None, 7, 20, 64)|0|convolution2d_85[0][0]          
 (Dense)|(None, 1164)|10430604|flatten_12[0][0]                 
--
 (Activation)|(None, 1164)|0|dropout_23[0][0]                 
--
 (Dropout)|(None, 1164)|0|dense_56[0][0]                   
--
 (Dense)|(None, 100)|116500|activation_45[0][0]                               
--
 activation_46 (Activation)|(None, 100)|0|dropout_24[0][0]                 
--
 (Dropout)|(None, 100)|0|dense_57[0][0]  
--
 dense_58 (Dense)|(None, 50)|5050|activation_46[0][0]              
--
 activation_47 (Activation)|(None, 50)|0|dense_58[0][0]                   
--
 (Dropout)|(None, 100)|0|dense_57[0][0]  
--
 dense_59 (Dense)|(None, 10)|510|activation_47[0][0]              
--
 activation_48 (Activation)|(None, 10)|0|dense_59[0][0]                   
--
 dense_60 (Dense)|(None, 1)|11|activation_48[0][0]              
--
 
 Total params: 10684077
 
