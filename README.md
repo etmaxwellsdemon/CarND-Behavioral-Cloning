@@ -1,5 +1,4 @@
 # Self-Driving Car Engineer Nanodegree
-# Deep Learning
 ## Project: Behavioral Cloning
 
 ### Overview
@@ -34,9 +33,10 @@ This project requires **Python 3.5** and the following Python libraries installe
 2. Then we tried the dataset created by [Udacity officially](https://d17h27t6h515a5.cloudfront.net/topher/2016/December/584f6edd_data/data.zip)
 
 ### Preprocessing
-1. We convert the RGB to YUV according to the [paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf)
 
 ![](https://github.com/etmaxwellsdemon/CarND-Behavioral-Cloning/blob/master/YUV.png)
+
+1. We convert the RGB to YUV according to the [paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf)
 
 2. We resampled the image by the factor of 4, from 320x160 to 80x40
 
@@ -50,7 +50,6 @@ Also, I've generate mirror images with steering angles to create more training d
 
 ### Network Structure
 The network structure and the training parameter are both included in the model.py file and the Jupyter Notebook file(behavioral cloning.ipynb)
- 
 
 The structure is identical to the [Nividia paper](http://images.nvidia.com/content/tegra/automotive/images/2016/solutions/pdf/end-to-end-dl-using-px.pdf), which is listed bellow:
 
@@ -83,11 +82,20 @@ Total params: 10684077
 
 The learning rate we're choosing is 0.0001 according to other's discussion in on the Slack channel and our own testing. The 0.001 will be too large for training and 0.00001 will be to small to findout the optimized mininum.
 
+I've also tested the network structure with and without Lambda layer, and it turns out the with the Lambda layer one runs more smoothly.
+
+
 ### Conclusion
-The model.json is with Lambda and Batch Normalization Layer while model3.json is only with Batch Normalization Layer. The previous one looks better.
 
-We've also tested the data on the testing track, but it cannot generate good result. I believe it could be the reason that the neuroun network has remembered the training image data, with it's luminance, color and contrast info. I'll try to add some randomly contrast, color etc. to see if it can work better for testing track. 
+With the official training data provided by Udacity, the car was able to run smoothly by itself on testing data of Track1.
 
-However, the flipped image was proved to be deteriorate the training result
+However, with the weights training on Track1, the car cannot generate good result on Track2. I believe it could be the reason that the neuroun network has remembered the training image data, with it's luminance, color and contrast info. 
 
-The .h5 file was too large to github.
+So I've also tried to add Track2 data with Track1 for training in case of overfitting. The result is much more better, but still hit the track after a while on Track2.
+
+However, the result still runs smoothly on Track1.
+
+Other ways to improve the result could be adding some randomly contrast, color etc. and I'll try them later.
+
+As the .h5 file was too large to github, [I've uploaded it on to  Dropbox](https://www.dropbox.com/s/jneba7kdg0p2oim/model.h5?dl=0). 
+
