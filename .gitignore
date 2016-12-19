@@ -13,5 +13,6 @@ models
 /Recovery_left
 /data
 /Counter-Clock/
+/data_track2/
 model.h5
 model1.h5
