@@ -84,6 +84,7 @@ Total params: 10684077
 
 #####Network Structure Parameter
 Other parameters of network was tested. I've tried to divide conv2 layer's output by 2, which turns out the result for conv2d to: 
+
 Layer (type)|Output Shape                 
 ----------- | -----------
 (Convolution2D)|(None, 14, 40, 12)     
