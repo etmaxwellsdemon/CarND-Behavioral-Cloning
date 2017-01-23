@@ -84,13 +84,14 @@ Total params: 10684077
 
 #####Network Structure Parameter
 Other parameters of network was tested. I've tried to divide conv2 layer's output by 2, which turns out the result for conv2d to: 
-Layer (type)|Output Shape|                   
------------ | -----------|
-(Convolution2D)|(None, 14, 40, 12)|     
-(Convolution2D)|(None, 7, 20, 18)|
-(Convolution2D)|(None, 7, 20, 23)|
-(Convolution2D)|(None, 7, 20, 32)|
-(Convolution2D)|(None, 7, 20, 32)|
+Layer (type)|Output Shape                 
+----------- | -----------
+(Convolution2D)|(None, 14, 40, 12)     
+(Convolution2D)|(None, 7, 20, 18)
+(Convolution2D)|(None, 7, 20, 23)
+(Convolution2D)|(None, 7, 20, 32)
+(Convolution2D)|(None, 7, 20, 32)
+
 But the result doesn't change much.
 
 I've also tested the network structure with and without Lambda layer, and it turns out the with the Lambda layer one runs more smoothly.
@@ -99,7 +100,7 @@ I've also tested the network structure with and without Lambda layer, and it tur
 The learning rate we're choosing is 0.0001 according to other's discussion in on the Slack channel and our own testing. The 0.001 will be too large for training and 0.00001 will be to small to findout the optimized mininum.
 
 
-####Epoch
+#####Epoch
 What's more, the reason of choosing 20 as the epoch parameter is that, I've found usually 10+ of epoches will sufficient to reach a good val_loss. And I've added the patience parameter of 2, which will make the training stop if the loss result for validation data stop decreasing for more than twice.
 
 #####Batch Size
