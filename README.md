@@ -125,5 +125,5 @@ In addition, the throttle value in drive.py also effects the result. I guess it 
 
 As the .h5 file was too large to github, [I've uploaded it on to  Dropbox](https://www.dropbox.com/s/jneba7kdg0p2oim/model.h5?dl=0). 
 
-In case of missing the result, I've uploaded it on [YouTube]()
+In case of missing the result, I've uploaded it on [YouTube](https://youtu.be/k1dibDf4xx0)
 
